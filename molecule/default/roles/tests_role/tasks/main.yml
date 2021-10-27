@@ -1,0 +1,15 @@
+---
+- name: "include tasks for testing Docker"
+  include_tasks: "test_docker.yml"
+
+- name: "include tasks for testing alma"
+  include_tasks: "test_almalinux8.yml"
+
+- name: "include tasks for testing centos"
+  include_tasks: "test_centos7.yml"
+
+- name: "include tasks for testing common"
+  include_tasks: "test_common_packages.yml"
+
+- name: "include tasks for testing ubuntu"
+  include_tasks: "test_ubuntu20.04.yml"

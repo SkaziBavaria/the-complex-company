@@ -1,0 +1,13 @@
+---
+- name: "smem - check smem package status"
+  package:
+    name:
+      - smem
+    state: "present"
+  check_mode: yes
+  register: pkg_status
+ 
+- name: "smem - test smem package is installed"
+  assert:
+    that:
+      - not pkg_status.changed

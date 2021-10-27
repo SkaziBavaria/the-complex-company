@@ -1,0 +1,9 @@
+---
+- name: "Install common packages"
+  package:
+    update_cache: yes
+    name:
+      - telnet
+      - unzip
+      - tar
+    state: "present"

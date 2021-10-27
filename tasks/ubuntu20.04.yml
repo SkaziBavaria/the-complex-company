@@ -1,0 +1,11 @@
+---
+- name: "Install OS-specific packages"
+  package:
+    update_cache: yes
+    name:
+      - net-tools
+    state: "present"
+
+- name: "debug message"
+  debug:
+    msg: "Let's go!"

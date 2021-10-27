@@ -1,0 +1,16 @@
+---
+- name: "Docker - check Docker package status"
+  package:
+    name:
+      - docker
+      - docker-ce
+      - docker-ce-cli
+      - continerd.io
+    state: "present"
+  check_mode: yes
+  register: pkg_status
+ 
+- name: "Docker - test Docker package is installed"
+  assert:
+    that:
+      - not pkg_status.changed

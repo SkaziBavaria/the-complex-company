@@ -1,0 +1,11 @@
+---
+- name: "Install OS-specific packages"
+  package:
+    update_cache: yes
+    name:
+      - smem
+    state: "present"
+
+- name: "debug message"
+  debug:
+    msg: "I have been around for quiet some time!"

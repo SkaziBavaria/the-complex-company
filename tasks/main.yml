@@ -1,0 +1,26 @@
+---
+- name: "Include Docker installation tasks"
+  include_tasks: "docker.yml"
+
+- name: "Include common packages installation tasks"
+  include_tasks: "common_packages.yml"
+
+- name: "Include AlmaLinux 8 installation tasks"
+  include_tasks: "almalinux8.yml"
+  when: ansible_distribution == "AlmaLinux"
+
+- name: "Include CentOS 7 installation tasks"
+  include_tasks: "centos7.yml"
+  when: ansible_distribution == "CentOS"
+
+- name: "Include Ubuntu 20.04 installation tasks"
+  include_tasks: "ubuntu20.04.yml"
+  when: ansible_distribution == "Ubuntu"
+
+# - name: Test Docker with hello world
+#   shell: "docker run hello-world"
+#   register: hello_world_output
+
+# - name: Show output of hello word example
+# debug:
+# msg: "Container Output: {{hello_world_output.stdout}}"

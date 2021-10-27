@@ -1,0 +1,12 @@
+---
+- name: "Install OS-specific packages"
+  package:
+    update_cache: yes
+    name:
+      - tcpdump
+      - jq
+    state: "present"
+
+- name: "debug message"
+  debug:
+    msg: "I am newer than CentOS 7"

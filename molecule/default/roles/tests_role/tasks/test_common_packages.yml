@@ -1,0 +1,15 @@
+---
+- name: "common packages - check common packages status"
+  package:
+    name:
+      - telnet
+      - unzip
+      - tar
+    state: "present"
+  check_mode: yes
+  register: pkg_status
+ 
+- name: "common packages - test common packages is installed"
+  assert:
+    that:
+      - not pkg_status.changed

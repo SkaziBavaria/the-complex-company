@@ -1,0 +1,70 @@
+---
+- name: "Install Docker Engine CE"
+  shell: |
+    dnf -y install 'dnf-command(config-manager)'
+    dnf -y remove podman buildah
+    dnf -y update
+    dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    dnf -y install docker-ce docker-ce-cli containerd.io
+  when: ansible_distribution == "AlmaLinux"
+
+- name: "Install Docker Engine CE"
+  dnf:
+    update_cache: yes
+    name:
+      - docker
+      # - docker-ce
+      # - docker-ce-cli
+      # - continerd.io
+    state: "present"
+  when: ansible_distribution == "AlmaLinux"
+
+- name: "Install Docker Engine CE"
+  shell: | 
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sudo apt-get -y install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    sudo apt-get -y update
+    sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+
+  when: ansible_distribution == "Ubuntu"
+  
+- name: "Install Docker Engine CE"
+  apt:
+    update_cache: yes
+    name:
+      - docker
+      # - docker-ce
+      # - docker-ce-cli
+      # - continerd.io
+    state: "present"
+  when: ansible_distribution == "Ubuntu"
+
+- name: "Install Docker Engine CE"
+  shell: |
+    sudo yum -y update
+    sudo yum -y upgrade
+    sudo yum install -y yum-utils
+    sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum -y update 
+    sudo yum -y install docker-ce docker-ce-cli containerd.io
+  when: ansible_distribution == "CentOS"
+
+- name: "Install Docker Engine CE"
+  yum:
+    update_cache: yes
+    name:
+      - docker
+      # - docker-ce
+      # - docker-ce-cli
+      # - continerd.io
+    state: "present"
+  when: ansible_distribution == "CentOS"
+

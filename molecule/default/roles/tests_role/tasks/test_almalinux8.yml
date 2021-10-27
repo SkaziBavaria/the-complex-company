@@ -1,0 +1,14 @@
+---
+- name: "Almalinux8 - check AlmaLinux8 package status"
+  package:
+    name:
+      - tcpdump
+      - jq
+    state: "present"
+  check_mode: yes
+  register: pkg_status
+ 
+- name: "AlmaLinux8 - test AlmaLinux8 package is installed"
+  assert:
+    that:
+      - not pkg_status.changed
